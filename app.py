@@ -22,9 +22,9 @@ def init_db():
 @app.route("/")
 def index():
     conn = sqlite3.connect(DB_FILE)
-    cur = conn.execute("SELECT description, amount, category, date FROM expenses ORDER BY id DESC")
+    cur = conn.execute("SELECT id, description, amount, category, date FROM expenses ORDER BY id DESC")
     expenses = cur.fetchall()
-    total = sum(e[1] for e in expenses)
+    total = sum(e[2] for e in expenses)
     conn.close()
     return render_template("index.html", expenses=expenses, total=total)
 
@@ -43,6 +43,13 @@ def add_expense():
         )
         conn.commit()
         conn.close()
+    return redirect("/")
+@app.route("/delete/<int:expense_id>")
+def delete_expense(expense_id):
+    conn = sqlite3.connect(DB_FILE)
+    conn.execute("DELETE FROM expenses WHERE id = ?", (expense_id,))
+    conn.commit()
+    conn.close()
     return redirect("/")
 
 if __name__ == "__main__":
