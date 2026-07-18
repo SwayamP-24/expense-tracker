@@ -22,12 +22,23 @@
     <tr><th>Description</th><th>Amount</th><th>Category</th><th>Date</th></tr>
     {% for e in expenses %}
     <tr>
-      <td>{{ e[0] }}</td>
-      <td>₹{{ "%.2f"|format(e[1]) }}</td>
-      <td>{{ e[2] }}</td>
+      <td>{{ e[1] }}</td>
+      <td>₹{{ "%.2f"|format(e[2]) }}</td>
       <td>{{ e[3] }}</td>
+      <td>{{ e[4] }}</td>
     </tr>
     {% endfor %}
   </table>
+
+<tr><th>Description</th><th>Amount</th><th>Category</th><th>Date</th><th></th></tr>
+{% for e in expenses %}
+<tr>
+  <td>{{ e[1] }}</td>
+  <td>₹{{ "%.2f"|format(e[2]) }}</td>
+  <td>{{ e[3] }}</td>
+  <td>{{ e[4] }}</td>
+  <td><a href="/delete/{{ e[0] }}">Delete</a></td>
+</tr>
+{% endfor %}
 </body>
 </html>
