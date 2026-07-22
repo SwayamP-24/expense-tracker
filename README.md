@@ -142,6 +142,9 @@ ssh -i ~/Desktop/project-1.pem swayam@<public-ip>
 -->
 
 
+# Week - 2 Git/Github Foundation and Application Building
+
+
 # Expense Tracker
 
 A simple Flask-based expense tracker that lets you add and delete expenses, 
