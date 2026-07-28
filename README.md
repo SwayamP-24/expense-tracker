@@ -209,3 +209,22 @@ committing directly to `main`:
 This app will be containerized with Docker (Week 3), deployed via an 
 automated CI/CD pipeline (Month 2), and later run on Kubernetes with 
 monitoring and logging (Month 3) as part of the broader DevOps roadmap.
+
+## Running with Docker
+
+### Build and run manually
+\`\`\`bash
+docker build -t expense-tracker .
+docker run -d -p 5000:5000 --name expense-tracker-app expense-tracker
+\`\`\`
+
+### Or run with Docker Compose (recommended — includes persistent storage)
+\`\`\`bash
+docker compose up -d --build
+\`\`\`
+Data persists across container restarts via a mounted volume (`./data`).
+
+### Image on Docker Hub
+\`\`\`bash
+docker pull your-dockerhub-username/expense-tracker:v1
+\`\`\`
